@@ -1,0 +1,42 @@
+{% load static %}
+
+{% for item in carts %}
+
+    <tr>
+        <td>
+            <div class="d-table product-detail-cart">
+
+                <div class="media">
+                    <div class="row no-gutters">
+
+                        <div class="col-12 col-lg-2 product-detail-cart-image">
+                        <a class="shopping-product" href="#"><img src="{% static ' {{ cart.product_id.image}}' %}" alt="Generic placeholder image"></a>
+                        </div>
+
+                        <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
+                            <div class="media-body ml-lg-3">
+                                <h4 class="product-name"><a href="{%  url 'product-detail' ">{{item.product_id.name}}</a></h4>
+                                <p class="product-des">{{item.product_id.slug}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <h4 class="text-center amount">${{item.product_id.price}}</h4>
+        </td>
+
+        <td class="text-center">
+            <div class="quote text-center mt-1">
+                <input type="number" placeholder="{{ item.quantity }}" class="quote" min="1" max="100">
+            </div>
+        </td>
+        <td>
+            <h4 class="text-center amount">${{ total_amount }}</h4>
+        </td>
+        <td class="text-center"><a data_id = "{{ item.product_id.id }}" class="btn-close delete_from_cart" href="#."><i class="lni-trash"></i></a></td>
+    </tr>
+
+
+{% endfor %}
